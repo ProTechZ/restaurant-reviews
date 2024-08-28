@@ -5,7 +5,15 @@ import cors from "cors"
 const app = express();
 app.use(bodyParser.json());
 app.use(express.json());
-app.use(cors)
+
+app.use(
+  cors({
+    credentials: true,
+    methods: ['GET', 'POST', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Set-Cookie'],
+    origin: ['http://localhost:3000'],
+  })
+);
 
 const port = process.env.PORT || 3001;
 

@@ -1,27 +1,30 @@
 import React, { useState, useEffect } from "react";
 import logo from "./logo.svg";
-import "./App.css";
+
+export const headers = new Headers();
+headers.append("Content-Type", "application/json");
+headers.append("Accept", "application/json");
 
 function App() {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<string>('');
   useEffect(() => {
     const callBackendAPI = async () => {
-      console.log('hi')
       try {
-        const response = await fetch("http://localhost:3001/", );
-        if (!response.ok) {
-          throw new Error("Failed to fetch data");
-        }
-        console.log(response)
-        const body = await response.json();
-        console.log(body)
-        // setData(body.message);
-      } catch (error ) {
-        console.error((error as Error).message);
+        const response = await fetch("http://localhost:3001/", {
+          method: "GET",
+          credentials: "include",
+          headers,
+        });
+
+        const result = await response.text();
+
+        setData(result)
+      } catch (err) {
+        console.error(err);
       }
     };
-    callBackendAPI();
 
+    callBackendAPI();
   }, []);
 
   return (
@@ -29,10 +32,10 @@ function App() {
       <header className="App-header">
         <img className="App-logo" src={logo} alt="logo" />
         <h1 className="App-title">Welcome to React</h1>
-        <p style={{ color: "white" }}>{data}</p>
+        <p>{data}</p>
       </header>
     </div>
   );
 }
 
-export default App
+export default App;
