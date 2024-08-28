@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import logo from "./logo.svg";
 
 export const headers = new Headers();
 headers.append("Content-Type", "application/json");
@@ -28,10 +27,9 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img className="App-logo" src={logo} alt="logo" />
-        <h1 className="App-title">Welcome to React</h1>
+    <div className="">
+      <header className="">
+        <h1 className="text-3xl font-bold underline text-blue-600">Welcome to React</h1>
         <p>{data}</p>
       </header>
     </div>
