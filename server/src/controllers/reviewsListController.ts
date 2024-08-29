@@ -2,12 +2,12 @@ import { Request, Response } from 'express';
 import parseReviewsList from '../services/reviewsListService';
 
 const getReviewsList = async (req: Request, res: Response) => {
-  const { review } = req.body;
   try {
-    const sentiment = await parseReviewsList(review);
-    res.json({ sentiment });
+    const reviewsList = await parseReviewsList();
+    
+    return res.json({results: reviewsList})
   } catch (error) {
-    res.status(500).json({ message: 'Error analyzing sentiment' });
+    res.status(500).json({ message: 'Error getting list of reviews' });
   }
 };
 

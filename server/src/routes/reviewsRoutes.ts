@@ -3,7 +3,6 @@ import getReviewsList from '../controllers/reviewsListController';
 
 const router = express.Router();
 
-// POST route to analyze sentiment
-router.get('/reviews-list', getReviewsList);
+router.get('/list', getReviewsList);
 
 export default router;

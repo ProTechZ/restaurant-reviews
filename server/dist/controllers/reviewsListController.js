@@ -14,13 +14,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const reviewsListService_1 = __importDefault(require("../services/reviewsListService"));
 const getReviewsList = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { review } = req.body;
     try {
-        const sentiment = yield (0, reviewsListService_1.default)(review);
-        res.json({ sentiment });
+        const reviewsList = yield (0, reviewsListService_1.default)();
+        return res.json({ results: reviewsList });
     }
     catch (error) {
-        res.status(500).json({ message: 'Error analyzing sentiment' });
+        res.status(500).json({ message: 'Error getting list of reviews' });
     }
 });
 exports.default = getReviewsList;
