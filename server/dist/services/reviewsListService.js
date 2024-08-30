@@ -34,7 +34,7 @@ const likedToInt = (columnValue, context) => {
 };
 const parseReviewsList = () => {
     const csvFilePath = path.join(__dirname, "/../../src/data/reviews.csv");
-    const headers = ["Review", "Liked"];
+    const headers = ["review", "liked"];
     const fileContent = fs.readFileSync(csvFilePath, { encoding: "utf-8" });
     return new Promise((resolve, reject) => {
         (0, csv_parse_1.parse)(fileContent, {

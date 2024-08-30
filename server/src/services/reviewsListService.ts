@@ -3,8 +3,8 @@ import * as path from "path";
 import { CastingContext, parse } from "csv-parse";
 
 type ReviewsList = {
-  Review: string;
-  Liked: number;
+  review: string;
+  liked: number;
 };
 
 const likedToInt = (columnValue: string, context: CastingContext) => {
@@ -16,7 +16,7 @@ const likedToInt = (columnValue: string, context: CastingContext) => {
  
 const parseReviewsList = () => {
   const csvFilePath = path.join(__dirname, "/../../src/data/reviews.csv");
-  const headers = ["Review", "Liked"];
+  const headers = ["review", "liked"];
 
   const fileContent = fs.readFileSync(csvFilePath, { encoding: "utf-8" });
 
