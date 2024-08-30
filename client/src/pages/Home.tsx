@@ -17,9 +17,10 @@ function Home() {
 
   return (
     <div className="">
-      <h1 className="text-3xl font-cursive text-center text-secondary">
+      <h1 className="text-3xl font-cursive text-center text-secondary mb-6">
         REVIEWS
       </h1>
+
       <ReviewsList reviewsList={reviewsList} />
     </div>
   );

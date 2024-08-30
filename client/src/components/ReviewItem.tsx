@@ -2,12 +2,8 @@ import { Review } from "..";
 
 function ReviewItem({ review, liked }: Review) {
   return (
-    <div className="">
-      <header className="">
-        <h1 className="">
-          {review} - {liked}
-        </h1>
-      </header>
+    <div className="border-b-2 border-red-200 p-3 hover:p-2.5 hover:cursor-pointer ">
+      <h1 className="text-secondary">{review}</h1>
     </div>
   );
 }
