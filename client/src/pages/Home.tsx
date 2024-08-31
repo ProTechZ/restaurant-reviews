@@ -13,6 +13,7 @@ function Home() {
     }
 
     fetchMyAPI();
+    console.log(reviewsList);
   }, []);
 
   return (
