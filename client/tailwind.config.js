@@ -7,9 +7,7 @@ module.exports = {
         cursive: ["Pacifico"],
       },
       colors: {
-        primary: "#4e64a3",
-        secondary: "#E0FBFC",
-        tertiary: "#F25757",
+        navy: "#4e64a3",
       },
     },
   },
