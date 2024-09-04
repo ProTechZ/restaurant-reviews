@@ -1,4 +1,3 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 
@@ -13,7 +12,7 @@ export type Review = {
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/reviews",
     element: <Home />,
   },
 ]);

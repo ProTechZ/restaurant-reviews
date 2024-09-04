@@ -18,7 +18,6 @@ function ReviewsList({ reviewsList }: { reviewsList: Review[] }) {
 
   // navigating the reviews with arrow keys
   useEffect(() => {
-    
     const handleKeyPress = (event: KeyboardEvent) => {
       if (event.key === "ArrowRight") {
         handleNextPage();
@@ -26,13 +25,13 @@ function ReviewsList({ reviewsList }: { reviewsList: Review[] }) {
         handlePrevPage();
       }
     };
-    
+
     window.addEventListener("keydown", handleKeyPress);
     return () => {
       window.removeEventListener("keydown", handleKeyPress);
     };
   }, []);
-  
+
   useEffect(() => {
     const startIdx = (currentPage - 1) * reviewsPerPage;
     const endIdx = startIdx + reviewsPerPage;
@@ -46,10 +45,12 @@ function ReviewsList({ reviewsList }: { reviewsList: Review[] }) {
         <ReviewItem key={ind} review={review} liked={liked} />
       ))}
 
-      <div className="absolute bottom-2 left-0 w-full  justify-center bg-blue-100">
+      <div className="absolute bottom-4 left-0 w-full  justify-center">
         <Paginator
-          handleNextPage={handleNextPage}
           handlePrevPage={handlePrevPage}
+          handleFirstPage={() => setCurrentPage(1)}
+          handleNextPage={handleNextPage}
+          handleLastPage={() => setCurrentPage(100)}
           currentPage={currentPage}
         />
       </div>

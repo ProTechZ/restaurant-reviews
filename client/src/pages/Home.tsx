@@ -8,7 +8,6 @@ import Navbar from "../components/Navbar";
 
 function Home() {
   const [reviewsList, setReviewsList] = useState<Review[]>([]);
-  const [featuredReviews, setFeaturedReviews] = useState<Review[]>([]);
 
   useEffect(() => {
     async function fetchMyAPI() {
@@ -25,9 +24,13 @@ function Home() {
         <Navbar />
       </div>
 
+      <h1 className="text-3xl text-center tracking-widest" >REVIEWS</h1>
+
       <div className="px-2 h-full">
         <ReviewsList reviewsList={reviewsList} />
       </div>
+
+      
     </div>
   );
 }
