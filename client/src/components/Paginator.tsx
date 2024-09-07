@@ -33,19 +33,35 @@ function Paginator({
       <button onClick={handlePrevPage} disabled={currentPage === 1}>
         <MdOutlineKeyboardArrowLeft size={25} />
       </button>
-      
+
       <h1 className="text-center w-20">
         Page{" "}
         <input
           className="w-8 text-center"
           value={displayCurrPage}
+          onKeyDown={(e) => {
+            const displayCurrPageInt = parseInt(displayCurrPage);
+
+            if (e.key == "Enter") {
+              if (
+                displayCurrPage == "" ||
+                displayCurrPageInt < 1 ||
+                displayCurrPageInt > 100
+              ) {
+                alert("That is not a valid page number.");
+              } else {
+                setCurrPage(displayCurrPageInt);
+              }
+            }
+          }}
+          
           onChange={(e) => {
             const newPage = e.target.value;
 
             if (newPage === "") {
               setDisplayCurrPage("");
             } else {
-              setCurrPage(parseInt(newPage));
+              setDisplayCurrPage(newPage.toString());
             }
           }}
         />
