@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import {
   MdOutlineKeyboardArrowRight,
   MdOutlineKeyboardArrowLeft,
@@ -7,33 +8,53 @@ import {
 
 function Paginator({
   currentPage,
+  setCurrPage,
   handlePrevPage,
-  handleFirstPage,
   handleNextPage,
-  handleLastPage,
 }: {
   currentPage: number;
+  setCurrPage: (value: React.SetStateAction<number>) => void;
   handlePrevPage: () => void;
-  handleFirstPage: () => void;
   handleNextPage: () => void;
-  handleLastPage: () => void;
-  
 }) {
+  const [displayCurrPage, setDisplayCurrPage] = useState(
+    currentPage.toString()
+  );
+
+  useEffect(() => {
+    setDisplayCurrPage(currentPage.toString());
+  }, [currentPage]);
+
   return (
     <div className="flex items-center justify-center">
-      <button onClick={handleFirstPage} disabled={currentPage === 1}>
+      <button onClick={() => setCurrPage(1)} disabled={currentPage === 1}>
         <MdOutlineKeyboardDoubleArrowLeft size={25} />
       </button>
       <button onClick={handlePrevPage} disabled={currentPage === 1}>
         <MdOutlineKeyboardArrowLeft size={25} />
       </button>
-      <h1 className=" text-center w-20">
-        Page <span className="font-bold"> {currentPage}</span>
+      
+      <h1 className="text-center w-20">
+        Page{" "}
+        <input
+          className="w-8 text-center"
+          value={displayCurrPage}
+          onChange={(e) => {
+            const newPage = e.target.value;
+
+            if (newPage === "") {
+              setDisplayCurrPage("");
+            } else {
+              setCurrPage(parseInt(newPage));
+            }
+          }}
+        />
       </h1>
+
       <button onClick={handleNextPage}>
         <MdOutlineKeyboardArrowRight size={25} />
       </button>
-      <button onClick={handleLastPage}>
+      <button onClick={() => setCurrPage(100)}>
         <MdOutlineKeyboardDoubleArrowRight size={25} />
       </button>
     </div>

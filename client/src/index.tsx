@@ -12,7 +12,7 @@ export type Review = {
 
 const router = createBrowserRouter([
   {
-    path: "/reviews",
+    path: "/",
     element: <Home />,
   },
 ]);

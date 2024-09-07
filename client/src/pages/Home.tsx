@@ -19,7 +19,7 @@ function Home() {
   }, []);
 
   return (
-    <div className="bg-gray-100 h-screen">
+    <div className="bg-gray-100 h-screen overflow-hidden">
       <div className="mb-2">
         <Navbar />
       </div>

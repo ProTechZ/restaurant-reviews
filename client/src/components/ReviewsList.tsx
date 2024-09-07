@@ -11,7 +11,7 @@ function ReviewsList({ reviewsList }: { reviewsList: Review[] }) {
   const reviewsPerPage = 10;
 
   const handleNextPage = () =>
-    setCurrentPage((prevPage) => (prevPage != 100 ? prevPage + 1 : 100));
+    setCurrentPage((prevPage) => (prevPage !== 100 ? prevPage + 1 : 100));
 
   const handlePrevPage = () =>
     setCurrentPage((prevPage) => (prevPage > 1 ? prevPage - 1 : 1));
@@ -45,12 +45,11 @@ function ReviewsList({ reviewsList }: { reviewsList: Review[] }) {
         <ReviewItem key={ind} review={review} liked={liked} />
       ))}
 
-      <div className="absolute bottom-4 left-0 w-full  justify-center">
+      <div className="absolute bottom-4 left-0 w-full justify-center">
         <Paginator
           handlePrevPage={handlePrevPage}
-          handleFirstPage={() => setCurrentPage(1)}
           handleNextPage={handleNextPage}
-          handleLastPage={() => setCurrentPage(100)}
+          setCurrPage={setCurrentPage}
           currentPage={currentPage}
         />
       </div>
