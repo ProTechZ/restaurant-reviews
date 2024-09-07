@@ -3,6 +3,7 @@ import { Review } from "..";
 
 import { getReviewsList } from "../services/reviewsListApi";
 
+import AddReviewBtn from "../components/AddReviewBtn";
 import ReviewsList from "../components/ReviewsList";
 import Navbar from "../components/Navbar";
 
@@ -24,13 +25,15 @@ function Home() {
         <Navbar />
       </div>
 
-      <h1 className="text-3xl text-center tracking-widest" >REVIEWS</h1>
+      <h1 className="text-3xl text-center tracking-widest">REVIEWS</h1>
+      
+      <div className="py-10 flex justify-center">
+        <AddReviewBtn />
+      </div>
 
       <div className="px-2 h-full">
         <ReviewsList reviewsList={reviewsList} />
       </div>
-
-      
     </div>
   );
 }
