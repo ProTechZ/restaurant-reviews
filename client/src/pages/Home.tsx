@@ -26,14 +26,21 @@ function Home() {
   }, []);
 
   return (
-    <div className="bg-gray-200 h-screen overflow-hidden">
+    <div className="bg-gray-100 h-screen overflow-hidden">
       {showModal ? (
-        <div className="z-200">
-          <AddReviewModal />
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          <div
+            className="fixed inset-0 bg-black opacity-50"
+            onClick={toggleModal}
+          />
+
+          <div className="relative z-60 w-full flex justify-center h-1/3 bottom-10">
+            <AddReviewModal toggleModal={toggleModal} />
+          </div>
         </div>
       ) : null}
 
-      <div className="z-100">
+      <div className="z-10">
         <div className="mb-2">
           <Navbar />
         </div>
