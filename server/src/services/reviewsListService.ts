@@ -1,44 +1,27 @@
-import * as fs from "fs";
-import * as path from "path";
-import { CastingContext, parse } from "csv-parse";
+import { createReadStream } from "fs";
+import { join } from "path";
+import { parse } from "fast-csv";
 
-type ReviewsList = {
+type ReviewType = {
   review: string;
   liked: number;
 };
 
-// converts the liked column to an integer column
-const likedToInt = (columnValue: string, context: CastingContext) => {
-  if (context.column === "Liked") {
-    return parseInt(columnValue);
-  }
-  return columnValue;
-};
- 
-export const parseReviewsList = () => {
-  const csvFilePath = path.join(__dirname, "/../../src/data/reviews.csv");
-  const headers = ["review", "liked"];
-
-  const fileContent = fs.readFileSync(csvFilePath, { encoding: "utf-8" });
-
+export const parseReviewsList = (): Promise<ReviewType[]> => {
   return new Promise((resolve, reject) => {
-    parse(
-      fileContent,
-      {
-        delimiter: ",",
-        columns: headers,
-        fromLine: 2,
-        cast: likedToInt,
-      },
-      (error, result: ReviewsList[]) => {
-        if (error) {
-          console.error(error);
-          reject(error); 
-        } else {
-          resolve(result); 
-        }
-      }
-    );
+    const results: ReviewType[] = [];
+
+    createReadStream(join(__dirname, "../../src/data/reviews.csv"))
+      .pipe(parse({ headers: true }))
+      .on("data", (row) => {
+        results.push(row);
+      })
+      .on("end", () => {
+        resolve(results);
+      })
+      .on("error", (err) => {
+        console.error(err);
+        reject(err);
+      });
   });
 };
-

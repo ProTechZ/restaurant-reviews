@@ -3,11 +3,11 @@ import { parseReviewsList } from "../services/reviewsListService";
 
 const getReviewsList = async (req: Request, res: Response) => {
   try {
-    const reviewsList = await parseReviewsList();
+    const results = await parseReviewsList();
 
-    return res.json({ results: reviewsList });
-  } catch (error) {
-    res.status(500).json({ message: "Error getting list of reviews" });
+    return res.json({ results });
+  } catch (err) {
+    res.status(500).json({ err, message: "Error getting list of reviews" });
   }
 };
 
