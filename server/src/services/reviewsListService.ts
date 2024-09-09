@@ -7,6 +7,7 @@ type ReviewsList = {
   liked: number;
 };
 
+// converts the liked column to an integer column
 const likedToInt = (columnValue: string, context: CastingContext) => {
   if (context.column === "Liked") {
     return parseInt(columnValue);
@@ -14,7 +15,7 @@ const likedToInt = (columnValue: string, context: CastingContext) => {
   return columnValue;
 };
  
-const parseReviewsList = () => {
+export const parseReviewsList = () => {
   const csvFilePath = path.join(__dirname, "/../../src/data/reviews.csv");
   const headers = ["review", "liked"];
 
@@ -41,4 +42,3 @@ const parseReviewsList = () => {
   });
 };
 
-export default parseReviewsList;

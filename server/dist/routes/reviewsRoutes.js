@@ -7,4 +7,5 @@ const express_1 = __importDefault(require("express"));
 const reviewsListController_1 = __importDefault(require("../controllers/reviewsListController"));
 const router = express_1.default.Router();
 router.get('/list', reviewsListController_1.default);
+router.post('/add', reviewsListController_1.default);
 exports.default = router;

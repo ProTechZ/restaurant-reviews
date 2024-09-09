@@ -9,14 +9,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const reviewsListService_1 = require("../services/reviewsListService");
-const getReviewsList = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const addReview = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const reviewsList = yield (0, reviewsListService_1.parseReviewsList)();
-        return res.json({ results: reviewsList });
+        const { review } = req.body;
+        return res.json({ results: "sucess" });
     }
     catch (error) {
-        res.status(500).json({ message: "Error getting list of reviews" });
+        res.status(500).json({ message: "Error adding the review" });
     }
 });
-exports.default = getReviewsList;
+exports.default = addReview;

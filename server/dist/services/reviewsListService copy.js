@@ -23,7 +23,6 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.parseReviewsList = void 0;
 const fs = __importStar(require("fs"));
 const path = __importStar(require("path"));
 const csv_parse_1 = require("csv-parse");
@@ -55,4 +54,4 @@ const parseReviewsList = () => {
         });
     });
 };
-exports.parseReviewsList = parseReviewsList;
+exports.default = parseReviewsList;
