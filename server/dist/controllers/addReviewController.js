@@ -9,10 +9,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const addReviewService_1 = require("../services/addReviewService");
 const addReview = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { review } = req.body;
-        return res.json({ results: "sucess" });
+        // hardcoding the liked for now, will use nlp to figure if the review is postive/negative later
+        const reviewObj = { review, liked: 1 };
+        (0, addReviewService_1.addReviewToList)(reviewObj);
+        return res.json({ results: "Successfully added review." });
     }
     catch (error) {
         res.status(500).json({ message: "Error adding the review" });

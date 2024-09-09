@@ -5,7 +5,12 @@ const addReview = async (req: Request, res: Response) => {
   try {
     const { review } = req.body;
 
-    return res.json({ results: "sucess" });
+    // hardcoding the liked for now, will use nlp to figure if the review is postive/negative later
+    const reviewObj = {review, liked: 1}
+
+    addReviewToList(reviewObj)
+
+    return res.json({ results: "Successfully added review." });
   } catch (error) {
     res.status(500).json({ message: "Error adding the review" });
   }

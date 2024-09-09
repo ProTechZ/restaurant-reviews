@@ -2,7 +2,7 @@ import { createReadStream } from "fs";
 import { join } from "path";
 import { parse } from "fast-csv";
 
-type ReviewType = {
+export type ReviewType = {
   review: string;
   liked: number;
 };
