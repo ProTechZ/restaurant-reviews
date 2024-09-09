@@ -34,7 +34,7 @@ function Home() {
             onClick={toggleModal}
           />
 
-          <div className="relative z-60 w-full flex justify-center h-1/3 bottom-10">
+          <div className="relative z-60 w-full flex justify-center bottom-10">
             <AddReviewModal toggleModal={toggleModal} />
           </div>
         </div>
