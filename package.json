@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm run server",
-    "server": "cd server && nodemon app.js",
+    "tsc": "cd server && npm run tsc",
+    "server": "cd server && npm start",
     "client": "cd client && npm start"
   },
   "keywords": [],

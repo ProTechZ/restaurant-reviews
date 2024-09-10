@@ -3,11 +3,11 @@ const navbarItemsClasses =
 
 function Navbar() {
   return (
-    <div className="px-4 flex justify-between bg-white">
-      <h1 className="text-3xl font-cursive py-2 hover:cursor-pointer">
+    <div className="px-4 flex justify-between items-center bg-white">
+      <h1 className="text-3xl font-cursive hover:cursor-pointer">
         Francéī
       </h1>
-      <div className="flex items-center">
+      <div className="flex items-center mx-auto">
         <h1 className={navbarItemsClasses}>Home</h1>
         <h1 className={navbarItemsClasses}>Menu</h1>
         <h1 className={navbarItemsClasses}>Contact Us</h1>

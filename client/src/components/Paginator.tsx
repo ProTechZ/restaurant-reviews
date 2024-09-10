@@ -19,8 +19,6 @@ function Paginator({
   handlePrevPage: () => void;
   handleNextPage: () => void;
 }) {
-  console.log(pageLimit)
-
   const [displayCurrPage, setDisplayCurrPage] = useState(
     currentPage.toString()
   );
