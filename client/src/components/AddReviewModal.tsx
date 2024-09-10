@@ -1,21 +1,19 @@
 import React, { useState } from "react";
-import { validateReview } from "../services/addReviewApi";
+import { addReview, validateReview } from "../services/addReviewApi";
 
 function AddReviewModal({ toggleModal }: { toggleModal: () => void }) {
   const [review, setReview] = useState("");
-  const [errorMsg, setErrorMsg] = useState('')
+  const [errorMsg, setErrorMsg] = useState("");
 
   const onSubmit = () => {
-    const isValid = validateReview(review)
-    console.log(isValid)
+    const isValid = validateReview(review);
+  
     if (!isValid.valid) {
-      setErrorMsg(isValid.msg!)
-      
+      setErrorMsg(isValid.msg!);
     } else {
-      setErrorMsg('')
-      console.log('yay')
+      setErrorMsg("");
+      addReview(review);
     }
-
   };
 
   return (
