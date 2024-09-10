@@ -13,6 +13,7 @@ function AddReviewModal({ toggleModal }: { toggleModal: () => void }) {
     } else {
       setErrorMsg("");
       addReview(review);
+      toggleModal()
     }
   };
 

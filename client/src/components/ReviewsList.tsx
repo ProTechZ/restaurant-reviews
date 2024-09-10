@@ -47,6 +47,7 @@ function ReviewsList({ reviewsList }: { reviewsList: Review[] }) {
 
       <div className="absolute bottom-4 left-0 w-full justify-center">
         <Paginator
+          pageLimit={Math.ceil(reviewsList.length / reviewsPerPage)}
           handlePrevPage={handlePrevPage}
           handleNextPage={handleNextPage}
           setCurrPage={setCurrentPage}

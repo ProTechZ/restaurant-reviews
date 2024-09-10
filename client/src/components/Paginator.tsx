@@ -8,15 +8,19 @@ import {
 
 function Paginator({
   currentPage,
+  pageLimit,
   setCurrPage,
   handlePrevPage,
   handleNextPage,
 }: {
   currentPage: number;
+  pageLimit: number;
   setCurrPage: (value: React.SetStateAction<number>) => void;
   handlePrevPage: () => void;
   handleNextPage: () => void;
 }) {
+  console.log(pageLimit)
+
   const [displayCurrPage, setDisplayCurrPage] = useState(
     currentPage.toString()
   );
@@ -46,7 +50,7 @@ function Paginator({
               if (
                 displayCurrPage == "" ||
                 displayCurrPageInt < 1 ||
-                displayCurrPageInt > 100
+                displayCurrPageInt > pageLimit
               ) {
                 alert("That is not a valid page number.");
               } else {
@@ -54,7 +58,6 @@ function Paginator({
               }
             }
           }}
-          
           onChange={(e) => {
             const newPage = e.target.value;
 
@@ -67,10 +70,10 @@ function Paginator({
         />
       </h1>
 
-      <button onClick={handleNextPage}>
+      <button onClick={handleNextPage} disabled={currentPage === pageLimit}>
         <MdOutlineKeyboardArrowRight size={25} />
       </button>
-      <button onClick={() => setCurrPage(100)}>
+      <button onClick={() => setCurrPage(pageLimit)} disabled={currentPage === pageLimit}>
         <MdOutlineKeyboardDoubleArrowRight size={25} />
       </button>
     </div>
