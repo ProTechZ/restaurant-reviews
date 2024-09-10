@@ -1,5 +1,3 @@
-import { MdMenu } from "react-icons/md";
-
 const navbarItemsClasses =
   "hover:bg-slate-400 hover:text-white hover:cursor-pointer px-3 h-full align-middle py-3 text-navy";
 
@@ -18,10 +16,6 @@ function Navbar() {
           Reviews
         </h1>
       </div>
-
-      <button>
-        <MdMenu size={30} />
-      </button>
     </div>
   );
 }
