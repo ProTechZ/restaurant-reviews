@@ -1,6 +1,7 @@
 import express, { Request, Response } from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
+import dotenv from 'dotenv'
 
 import reviewsRouter from "./routes/reviewsRoutes";
 
@@ -12,6 +13,8 @@ app.use(
     extended: true,
   })
 );
+
+dotenv.config({path: './.env'})
 
 app.use(
   cors({
