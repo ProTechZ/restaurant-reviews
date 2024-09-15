@@ -1,6 +1,9 @@
 import React from "react";
+import useModalStore from "../stores/modalStore";
 
-function AddReviewBtn({ toggleModal }: { toggleModal: () => void }) {
+function AddReviewBtn() {
+  const {toggleModal} = useModalStore()
+
   return (
     <button
       className="bg-red-400 border border-red-500 hover:bg-red-500 rounded-xl px-3 py-1 outline-none "

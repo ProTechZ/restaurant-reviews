@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Review } from "..";
 
 import { getReviewsList } from "../services/reviewsListApi";
+import useModalStore from "../stores/modalStore";
 
 import AddReviewBtn from "../components/AddReviewBtn";
 import ReviewsList from "../components/ReviewsList";
@@ -10,11 +11,7 @@ import AddReviewModal from "../components/AddReviewModal";
 
 function Home() {
   const [reviewsList, setReviewsList] = useState<Review[]>([]);
-  const [showModal, setShowModal] = useState(false);
-
-  const toggleModal = () => {
-    setShowModal(showModal ? false : true);
-  };
+  const {showModal, toggleModal} = useModalStore()
 
   useEffect(() => {
     async function fetchMyAPI() {
@@ -35,7 +32,7 @@ function Home() {
           />
 
           <div className="relative z-60 w-full flex justify-center bottom-10">
-            <AddReviewModal toggleModal={toggleModal} />
+            <AddReviewModal />
           </div>
         </div>
       ) : null}
@@ -47,7 +44,7 @@ function Home() {
         <h1 className="text-3xl text-center tracking-widest">REVIEWS</h1>
 
         <div className="py-10 flex justify-center">
-          <AddReviewBtn toggleModal={toggleModal} />
+          <AddReviewBtn  />
         </div>
 
         <div className="px-2 h-full">

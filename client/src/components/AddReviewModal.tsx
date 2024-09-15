@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { addReview, validateReview } from "../services/addReviewApi";
+import useModalStore from "../stores/modalStore";
 
-function AddReviewModal({ toggleModal }: { toggleModal: () => void }) {
+function AddReviewModal() {
   const [review, setReview] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
+  const { toggleModal} = useModalStore()
 
   const onSubmit = async () => {
     const isValid = validateReview(review);
