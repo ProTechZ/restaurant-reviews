@@ -28,7 +28,7 @@ const fs_1 = require("fs");
 const fastcsv = __importStar(require("fast-csv"));
 const path_1 = require("path");
 const addReviewToList = (review) => {
-    const ws = (0, fs_1.createWriteStream)((0, path_1.join)(__dirname, "../../src/data/reviews.csv"), { flags: 'a', });
+    const ws = (0, fs_1.createWriteStream)((0, path_1.join)(__dirname, '../../../data/reviews.csv'), { flags: 'a', });
     fastcsv
         .write([review], { headers: false, includeEndRowDelimiter: true })
         .pipe(ws)
