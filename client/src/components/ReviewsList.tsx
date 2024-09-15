@@ -19,7 +19,7 @@ function ReviewsList({ reviewsList }: { reviewsList: Review[] }) {
 
   const handleNextPage = () => {
     const prevPage = currentPage;
-    setCurrentPage(prevPage !== 100 ? prevPage + 1 : 100);
+    setCurrentPage(prevPage !== pageLimit ? prevPage + 1 : pageLimit);
   };
 
   // navigating the reviews with arrow keys
