@@ -6,7 +6,9 @@
   "scripts": {
     "tsc": "cd server && npm run tsc",
     "server": "cd server && npm start",
-    "client": "cd client && npm start"
+    "client": "cd client && npm start",
+    "fastapi": "cd fastapi-server && env\\Scripts\\activate && uvicorn server:app --reload"
+
   },
   "keywords": [],
   "author": "",
