@@ -71,7 +71,10 @@ function Paginator({
       <button onClick={handleNextPage} disabled={currentPage === pageLimit}>
         <MdOutlineKeyboardArrowRight size={25} />
       </button>
-      <button onClick={() => setCurrPage(pageLimit)} disabled={currentPage === pageLimit}>
+      <button
+        onClick={() => setCurrPage(pageLimit)}
+        disabled={currentPage === pageLimit}
+      >
         <MdOutlineKeyboardDoubleArrowRight size={25} />
       </button>
     </div>
