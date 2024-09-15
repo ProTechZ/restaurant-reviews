@@ -4,22 +4,23 @@ import ReviewItem from "./ReviewItem";
 import { useEffect, useState } from "react";
 import Paginator from "./Paginator";
 
-function ReviewsList({ reviewsList }: { reviewsList: Review[] }) {
-  const currPageFromStorage = localStorage.getItem("currPage");
+import usePaginationStore from "../stores/paginationStore";
 
-  const [currentPage, setCurrentPage] = useState(
-    currPageFromStorage ? parseInt(currPageFromStorage) : 1
-  );
+function ReviewsList({ reviewsList }: { reviewsList: Review[] }) {
+  const { currentPage, reviewsPerPage, setCurrentPage } = usePaginationStore();
   const [showedReviews, setShowedReviews] = useState<Review[]>([]);
 
-  const reviewsPerPage = 10;
   const pageLimit = Math.ceil(reviewsList.length / reviewsPerPage);
 
-  const handlePrevPage = () =>
-    setCurrentPage((prevPage) => (prevPage > 1 ? prevPage - 1 : 1));
+  const handlePrevPage = () => {
+    const prevPage = currentPage;
+    setCurrentPage(prevPage > 1 ? prevPage - 1 : 1);
+  };
 
-  const handleNextPage = () =>
-    setCurrentPage((prevPage) => (prevPage !== 100 ? prevPage + 1 : 100));
+  const handleNextPage = () => {
+    const prevPage = currentPage;
+    setCurrentPage(prevPage !== 100 ? prevPage + 1 : 100);
+  };
 
   // navigating the reviews with arrow keys
   useEffect(() => {
@@ -35,7 +36,7 @@ function ReviewsList({ reviewsList }: { reviewsList: Review[] }) {
     return () => {
       window.removeEventListener("keydown", handleKeyPress);
     };
-  }, []);
+  });
 
   useEffect(() => {
     const startIdx = (currentPage - 1) * reviewsPerPage;
@@ -56,7 +57,6 @@ function ReviewsList({ reviewsList }: { reviewsList: Review[] }) {
           pageLimit={pageLimit}
           handlePrevPage={handlePrevPage}
           handleNextPage={handleNextPage}
-          setCurrPage={setCurrentPage}
           currentPage={currentPage}
         />
       </div>

@@ -20,7 +20,8 @@ export const addReview = async (review: string) => {
         body: JSON.stringify({ review }),
       }
     );
-    const results = await response.json();
+    const {liked} = await response.json();
+    return liked
   } catch (e) {
     console.error((e as Error).message);
   }

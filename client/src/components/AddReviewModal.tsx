@@ -5,14 +5,14 @@ function AddReviewModal({ toggleModal }: { toggleModal: () => void }) {
   const [review, setReview] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
     const isValid = validateReview(review);
   
     if (!isValid.valid) {
       setErrorMsg(isValid.msg!);
     } else {
       setErrorMsg("");
-      addReview(review);
+      const liked = await addReview(review);
       toggleModal()
     }
   };

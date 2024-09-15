@@ -5,20 +5,21 @@ import {
   MdOutlineKeyboardDoubleArrowRight,
   MdOutlineKeyboardDoubleArrowLeft,
 } from "react-icons/md";
+import usePaginationStore from "../stores/paginationStore";
 
 function Paginator({
   currentPage,
   pageLimit,
-  setCurrPage,
   handlePrevPage,
   handleNextPage,
 }: {
   currentPage: number;
   pageLimit: number;
-  setCurrPage: (value: React.SetStateAction<number>) => void;
   handlePrevPage: () => void;
   handleNextPage: () => void;
 }) {
+  const { setCurrentPage } = usePaginationStore();
+
   const [displayCurrPage, setDisplayCurrPage] = useState(
     currentPage.toString()
   );
@@ -29,11 +30,11 @@ function Paginator({
 
   return (
     <div className="flex items-center justify-center">
-      <button onClick={() => setCurrPage(1)} disabled={currentPage === 1}>
-        <MdOutlineKeyboardDoubleArrowLeft size={25} />
+      <button onClick={() => setCurrentPage(1)} disabled={currentPage === 1}>
+        <MdOutlineKeyboardDoubleArrowLeft size={25} className="text-navy" />
       </button>
       <button onClick={handlePrevPage} disabled={currentPage === 1}>
-        <MdOutlineKeyboardArrowLeft size={25} />
+        <MdOutlineKeyboardArrowLeft size={25} className="text-navy" />
       </button>
 
       <h1 className="text-center w-20">
@@ -44,15 +45,15 @@ function Paginator({
           onKeyDown={(e) => {
             const displayCurrPageInt = parseInt(displayCurrPage);
 
-            if (e.key == "Enter") {
+            if (e.key === "Enter") {
               if (
-                displayCurrPage == "" ||
+                displayCurrPage === "" ||
                 displayCurrPageInt < 1 ||
                 displayCurrPageInt > pageLimit
               ) {
                 alert("That is not a valid page number.");
               } else {
-                setCurrPage(displayCurrPageInt);
+                setCurrentPage(displayCurrPageInt);
               }
             }
           }}
@@ -69,13 +70,13 @@ function Paginator({
       </h1>
 
       <button onClick={handleNextPage} disabled={currentPage === pageLimit}>
-        <MdOutlineKeyboardArrowRight size={25} />
+        <MdOutlineKeyboardArrowRight size={25} className="text-navy" />
       </button>
       <button
-        onClick={() => setCurrPage(pageLimit)}
+        onClick={() => setCurrentPage(pageLimit)}
         disabled={currentPage === pageLimit}
       >
-        <MdOutlineKeyboardDoubleArrowRight size={25} />
+        <MdOutlineKeyboardDoubleArrowRight size={25} className="text-navy" />
       </button>
     </div>
   );
