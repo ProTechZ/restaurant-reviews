@@ -9,18 +9,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const addReviewService_1 = require("../services/addReviewService");
-const reviewAnalysisService_1 = require("../services/reviewAnalysisService");
-const addReview = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const { review } = req.body;
-        const { liked } = yield (0, reviewAnalysisService_1.analyseReview)(review);
-        const reviewObj = { review, liked: liked };
-        (0, addReviewService_1.addReviewToList)(reviewObj);
-        return res.json({ results: "Successfully added review.", liked });
-    }
-    catch (error) {
-        res.status(500).json({ message: "Error adding the review" });
-    }
+exports.analyseReview = void 0;
+const analyseReview = (review) => __awaiter(void 0, void 0, void 0, function* () {
+    const response = yield fetch('http://localhost:8000/predict', {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ review }),
+    });
+    const results = yield response.json();
+    return results;
 });
-exports.default = addReview;
+exports.analyseReview = analyseReview;

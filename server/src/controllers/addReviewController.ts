@@ -1,16 +1,18 @@
 import { Request, Response } from "express";
 import { addReviewToList } from "../services/addReviewService";
+import { analyseReview } from "../services/reviewAnalysisService";
 
 const addReview = async (req: Request, res: Response) => {
   try {
     const { review } = req.body;
-    
-    // hardcoding the liked for now, will use nlp to figure if the review is postive/negative later
-    const reviewObj = {review, liked: 1}
 
-    addReviewToList(reviewObj)
+    const { liked } = await analyseReview(review);
 
-    return res.json({ results: "Successfully added review." });
+    const reviewObj = { review, liked: liked };
+
+    addReviewToList(reviewObj);
+
+    return res.json({ results: "Successfully added review.", liked });
   } catch (error) {
     res.status(500).json({ message: "Error adding the review" });
   }
