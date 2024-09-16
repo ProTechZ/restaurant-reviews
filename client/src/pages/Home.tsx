@@ -11,7 +11,7 @@ import AddReviewModal from "../components/AddReviewModal";
 
 function Home() {
   const [reviewsList, setReviewsList] = useState<Review[]>([]);
-  const {showModal, toggleModal} = useModalStore()
+  const { showModal, toggleModal } = useModalStore();
 
   useEffect(() => {
     async function fetchMyAPI() {
@@ -31,7 +31,7 @@ function Home() {
             onClick={toggleModal}
           />
 
-          <div className="relative z-60 w-full flex justify-center bottom-10">
+          <div className="relative z-60 w-fit flex justify-center bottom-10">
             <AddReviewModal />
           </div>
         </div>
@@ -44,7 +44,7 @@ function Home() {
         <h1 className="text-3xl text-center tracking-widest">REVIEWS</h1>
 
         <div className="py-10 flex justify-center">
-          <AddReviewBtn  />
+          <AddReviewBtn />
         </div>
 
         <div className="px-2 h-full">

@@ -10,4 +10,4 @@ const useModalStore = create<ModalState>((set) => ({
   toggleModal: () => set((state) => ({ showModal: !state.showModal })),
 }));
 
-export default useModalStore;
+export default useModalStore; 
