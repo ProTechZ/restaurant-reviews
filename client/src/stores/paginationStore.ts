@@ -7,7 +7,6 @@ interface PaginationState {
   setCurrentPage: (page: number) => void;
 }
 
-// Create the store with TypeScript types
 const usePaginationStore = create<PaginationState>()(
   persist(
     (set) => ({

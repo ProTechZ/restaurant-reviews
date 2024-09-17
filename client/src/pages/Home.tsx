@@ -11,7 +11,7 @@ import Modal from "../components/Modal";
 
 function Home() {
   const [reviewsList, setReviewsList] = useState<Review[]>([]);
-  const { showModal, toggleModal } = useModalStore();
+  const { showModal, closeModal } = useModalStore();
 
   useEffect(() => {
     async function fetchMyAPI() {
@@ -24,11 +24,11 @@ function Home() {
 
   return (
     <div className="bg-gray-100 h-screen overflow-hidden">
-      {true ? (
+      {showModal ? (
         <div className="fixed inset-0 z-50 flex items-center justify-center">
           <div
             className="fixed inset-0 bg-black opacity-50"
-            onClick={toggleModal}
+            onClick={closeModal}
           />
 
           <div className="relative z-60 bottom-10 ">

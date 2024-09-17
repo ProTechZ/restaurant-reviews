@@ -2,12 +2,14 @@ import { create } from "zustand";
 
 interface FeedbackState {
   showFeedback: boolean;
-  toggleFeedback: () => void;
+  goToFeedback: () => void;
+  closeFeedback: ()=> void
 }
 
 const useFeedbackStore = create<FeedbackState>((set) => ({
   showFeedback: false,
-  toggleFeedback: () => set((state) => ({ showFeedback: !state.showFeedback })),
+  goToFeedback: () => set(() => ({ showFeedback: true })),
+  closeFeedback: () => set(() => ({ showFeedback: false })),
 }));
 
 export default useFeedbackStore; 

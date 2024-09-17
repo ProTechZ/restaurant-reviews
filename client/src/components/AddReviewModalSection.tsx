@@ -9,8 +9,8 @@ const buttonStyle =
 function AddReviewModalSection() {
   const [review, setReview] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
-  const { toggleModal } = useModalStore();
-  const { toggleFeedback } = useFeedbackStore();
+  const { closeModal } = useModalStore();
+  const { goToFeedback } = useFeedbackStore();
 
   const onSubmit = async () => {
     const isValid = validateReview(review);
@@ -20,14 +20,11 @@ function AddReviewModalSection() {
     } else {
       setErrorMsg("");
       const liked = await addReview(review);
-      console.log(liked)
 
       if (liked === '0') {
-        console.log('hi')
-        toggleFeedback();
+        goToFeedback();
       } else {
-        console.log('hey')
-        toggleModal()
+        closeModal()
       }
     }
   };
@@ -54,7 +51,7 @@ function AddReviewModalSection() {
           Submit
         </button>
         <button
-          onClick={toggleModal}
+          onClick={closeModal}
           className={`${buttonStyle} bg-red-400 hover:bg-red-500`}
         >
           Close
