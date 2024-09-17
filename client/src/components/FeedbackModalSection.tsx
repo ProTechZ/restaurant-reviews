@@ -26,16 +26,17 @@ function FeedbackModalSection() {
   return (
     <div className="h-full w-full flex flex-col justify-between">
       <div className=" flex-col flex gap-5">
-        <label className="font-medium italic">
+        <h1 className="font-medium italic">
           We're sorry to hear that you feel that way.
-        </label>
+        </h1>
 
         <div>
-          <label className="text- size-small">
+          <h1 className="text- size-small">
             We would be glad for any feedback!
-          </label>
+          </h1>
 
           <textarea
+            name="feedback-input"
             onChange={(e) => setReview(e.target.value)}
             value={review}
             className="w-full h-36 resize-none outline-none bg-gray-100 border border-gray-300 text-sm rounded-lg focus:border-navy p-2.5"

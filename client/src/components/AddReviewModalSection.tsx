@@ -32,10 +32,12 @@ function AddReviewModalSection() {
   return (
     <div>
       <div className="mb-8">
-        <label className="font-medium text-gray-900">
+        <h1 className="font-medium text-gray-900">
           What do you think of us?
-        </label>
+        </h1>
+        
         <textarea
+          name='review-input'
           onChange={(e) => setReview(e.target.value)}
           value={review}
           className="w-full h-64 resize-none outline-none bg-gray-100 border border-gray-300 text-sm rounded-lg focus:border-navy p-2.5"

@@ -40,6 +40,7 @@ function Paginator({
       <h1 className="text-center w-20">
         Page{" "}
         <input
+          name='paginator-input'
           className="w-8 text-center"
           value={displayCurrPage}
           onKeyDown={(e) => {
