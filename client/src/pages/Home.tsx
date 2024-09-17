@@ -7,7 +7,7 @@ import useModalStore from "../stores/modalStore";
 import AddReviewBtn from "../components/AddReviewBtn";
 import ReviewsList from "../components/ReviewsList";
 import Navbar from "../components/Navbar";
-import AddReviewModal from "../components/AddReviewModal";
+import Modal from "../components/Modal";
 
 function Home() {
   const [reviewsList, setReviewsList] = useState<Review[]>([]);
@@ -24,15 +24,15 @@ function Home() {
 
   return (
     <div className="bg-gray-100 h-screen overflow-hidden">
-      {showModal ? (
+      {true ? (
         <div className="fixed inset-0 z-50 flex items-center justify-center">
           <div
             className="fixed inset-0 bg-black opacity-50"
             onClick={toggleModal}
           />
 
-          <div className="relative z-60 w-fit flex justify-center bottom-10">
-            <AddReviewModal />
+          <div className="relative z-60 bottom-10 ">
+            <Modal />
           </div>
         </div>
       ) : null}

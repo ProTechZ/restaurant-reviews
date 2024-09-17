@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import { addReview, validateReview } from "../services/addReviewApi";
 import useModalStore from "../stores/modalStore";
+import useFeedbackStore from "../stores/feedbackStore";
 
 const buttonStyle =
   "text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center";
 
-function AddReviewModal() {
+function AddReviewModalSection() {
   const [review, setReview] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const { toggleModal } = useModalStore();
+  const { toggleFeedback } = useFeedbackStore();
 
   const onSubmit = async () => {
     const isValid = validateReview(review);
@@ -18,12 +20,20 @@ function AddReviewModal() {
     } else {
       setErrorMsg("");
       const liked = await addReview(review);
-      toggleModal();
+      console.log(liked)
+
+      if (liked === '0') {
+        console.log('hi')
+        toggleFeedback();
+      } else {
+        console.log('hey')
+        toggleModal()
+      }
     }
   };
 
   return (
-    <div className="bg-white rounded-lg px-6 py-4">
+    <div>
       <div className="mb-8">
         <label className="font-medium text-gray-900">
           What do you think of us?
@@ -54,4 +64,4 @@ function AddReviewModal() {
   );
 }
 
-export default AddReviewModal;
+export default AddReviewModalSection;

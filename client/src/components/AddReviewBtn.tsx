@@ -2,7 +2,7 @@ import React from "react";
 import useModalStore from "../stores/modalStore";
 
 function AddReviewBtn() {
-  const {toggleModal} = useModalStore()
+  const { toggleModal } = useModalStore();
 
   return (
     <button
