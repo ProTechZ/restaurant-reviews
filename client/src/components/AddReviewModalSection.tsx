@@ -21,10 +21,10 @@ function AddReviewModalSection() {
       setErrorMsg("");
       const liked = await addReview(review);
 
-      if (liked === '0') {
+      if (liked === "0") {
         goToFeedback();
       } else {
-        closeModal()
+        closeModal();
       }
     }
   };
