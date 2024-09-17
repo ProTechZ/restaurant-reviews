@@ -10,6 +10,19 @@ function FeedbackModalSection() {
   const { closeModal } = useModalStore();
   const { closeFeedback } = useFeedbackStore();
 
+  const onSubmit = async () => {
+    console.log(
+      "You found this! 😂😂\nIf you're wondering, we don't actually care about your feedback!"
+    );
+    closeModal();
+    closeFeedback();
+  };
+
+  const onClose = () => {
+    closeModal();
+    closeFeedback();
+  };
+
   return (
     <div className="h-full w-full flex flex-col justify-between">
       <div className=" flex-col flex gap-5">
@@ -31,14 +44,14 @@ function FeedbackModalSection() {
       </div>
 
       <div className="flex flex-row gap-3">
-        <button className={`${buttonStyle} bg-navy hover:bg-blue-900`}>
+        <button
+          className={`${buttonStyle} bg-navy hover:bg-blue-900`}
+          onClick={onSubmit}
+        >
           Send
         </button>
         <button
-          onClick={() => {
-            closeModal();
-            closeFeedback();
-          }}
+          onClick={onClose}
           className={`${buttonStyle} bg-red-400 hover:bg-red-500`}
         >
           Close
