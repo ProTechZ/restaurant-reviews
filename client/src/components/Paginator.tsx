@@ -7,18 +7,9 @@ import {
 } from "react-icons/md";
 import usePaginationStore from "../stores/paginationStore";
 
-function Paginator({
-  currentPage,
-  pageLimit,
-  handlePrevPage,
-  handleNextPage,
-}: {
-  currentPage: number;
-  pageLimit: number;
-  handlePrevPage: () => void;
-  handleNextPage: () => void;
-}) {
-  const { setCurrentPage } = usePaginationStore();
+function Paginator({ pageLimit }: { pageLimit: number }) {
+  const { currentPage, setCurrentPage, handleNextPage, handlePrevPage } =
+    usePaginationStore();
 
   const [displayCurrPage, setDisplayCurrPage] = useState(
     currentPage.toString()
@@ -40,7 +31,7 @@ function Paginator({
       <h1 className="text-center w-20">
         Page{" "}
         <input
-          name='paginator-input'
+          name="paginator-input"
           className="w-8 text-center"
           value={displayCurrPage}
           onKeyDown={(e) => {
@@ -70,7 +61,10 @@ function Paginator({
         />
       </h1>
 
-      <button onClick={handleNextPage} disabled={currentPage === pageLimit}>
+      <button
+        onClick={() => handleNextPage(pageLimit)}
+        disabled={currentPage === pageLimit}
+      >
         <MdOutlineKeyboardArrowRight size={25} className="text-navy" />
       </button>
       <button

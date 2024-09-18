@@ -7,26 +7,16 @@ import Paginator from "./Paginator";
 import usePaginationStore from "../stores/paginationStore";
 
 function ReviewsList({ reviewsList }: { reviewsList: Review[] }) {
-  const { currentPage, reviewsPerPage, setCurrentPage } = usePaginationStore();
+  const { currentPage, reviewsPerPage, handleNextPage, handlePrevPage } = usePaginationStore();
   const [showedReviews, setShowedReviews] = useState<Review[]>([]);
 
   const pageLimit = Math.ceil(reviewsList.length / reviewsPerPage);
-
-  const handlePrevPage = () => {
-    const prevPage = currentPage;
-    setCurrentPage(prevPage > 1 ? prevPage - 1 : 1);
-  };
-
-  const handleNextPage = () => {
-    const prevPage = currentPage;
-    setCurrentPage(prevPage !== pageLimit ? prevPage + 1 : pageLimit);
-  };
 
   // navigating the reviews with arrow keys
   useEffect(() => {
     const handleKeyPress = (event: KeyboardEvent) => {
       if (event.key === "ArrowRight") {
-        handleNextPage();
+        handleNextPage(pageLimit);
       } else if (event.key === "ArrowLeft") {
         handlePrevPage();
       }
@@ -53,12 +43,7 @@ function ReviewsList({ reviewsList }: { reviewsList: Review[] }) {
       ))}
 
       <div className="absolute bottom-4 left-0 w-full justify-center">
-        <Paginator
-          pageLimit={pageLimit}
-          handlePrevPage={handlePrevPage}
-          handleNextPage={handleNextPage}
-          currentPage={currentPage}
-        />
+        <Paginator pageLimit={pageLimit}/>
       </div>
     </div>
   );
