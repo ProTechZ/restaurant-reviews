@@ -13,7 +13,7 @@ const usePaginationStore = create<PaginationState>()(
   persist(
     (set, get) => ({
       currentPage: 1,
-      reviewsPerPage: 10,
+      reviewsPerPage: 15,
       setCurrentPage: (page) => set({ currentPage: page }),
       handlePrevPage: () => {
         const prevPage = get().currentPage;

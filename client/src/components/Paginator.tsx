@@ -22,10 +22,10 @@ function Paginator({ pageLimit }: { pageLimit: number }) {
   return (
     <div className="flex items-center justify-center">
       <button onClick={() => setCurrentPage(1)} disabled={currentPage === 1}>
-        <MdOutlineKeyboardDoubleArrowLeft size={25} className="text-navy" />
+        <MdOutlineKeyboardDoubleArrowLeft size={25} />
       </button>
       <button onClick={handlePrevPage} disabled={currentPage === 1}>
-        <MdOutlineKeyboardArrowLeft size={25} className="text-navy" />
+        <MdOutlineKeyboardArrowLeft size={25} />
       </button>
 
       <h1 className="text-center w-20">
@@ -65,13 +65,13 @@ function Paginator({ pageLimit }: { pageLimit: number }) {
         onClick={() => handleNextPage(pageLimit)}
         disabled={currentPage === pageLimit}
       >
-        <MdOutlineKeyboardArrowRight size={25} className="text-navy" />
+        <MdOutlineKeyboardArrowRight size={25} />
       </button>
       <button
         onClick={() => setCurrentPage(pageLimit)}
         disabled={currentPage === pageLimit}
       >
-        <MdOutlineKeyboardDoubleArrowRight size={25} className="text-navy" />
+        <MdOutlineKeyboardDoubleArrowRight size={25} />
       </button>
     </div>
   );

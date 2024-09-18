@@ -1,13 +1,19 @@
 import { Review } from "../index";
-import ReviewItem from "./ReviewItem";
+import ReviewCard from "./ReviewCard";
 
 import { useEffect, useState } from "react";
-import Paginator from "./Paginator";
 
 import usePaginationStore from "../stores/paginationStore";
 
-function ReviewsList({ reviewsList, pageLimit }: { reviewsList: Review[], pageLimit: number }) {
-  const { currentPage, reviewsPerPage, handleNextPage, handlePrevPage } = usePaginationStore();
+function ReviewsList({
+  reviewsList,
+  pageLimit,
+}: {
+  reviewsList: Review[];
+  pageLimit: number;
+}) {
+  const { currentPage, reviewsPerPage, handleNextPage, handlePrevPage } =
+    usePaginationStore();
   const [showedReviews, setShowedReviews] = useState<Review[]>([]);
 
   // navigating the reviews with arrow keys
@@ -31,15 +37,14 @@ function ReviewsList({ reviewsList, pageLimit }: { reviewsList: Review[], pageLi
     const endIdx = startIdx + reviewsPerPage;
 
     setShowedReviews(reviewsList.slice(startIdx, endIdx));
-    localStorage.setItem("currPage", currentPage.toString());
+    console.log(reviewsPerPage, pageLimit);
   }, [currentPage, reviewsList]);
 
   return (
-    <div className="align-center pb-12">
+    <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 p-5">
       {showedReviews.map(({ review, liked }, ind) => (
-        <ReviewItem key={ind} review={review} liked={liked} />
+        <ReviewCard key={ind} review={review} liked={liked} />
       ))}
-
     </div>
   );
 }

@@ -22,11 +22,16 @@ function Home() {
     async function fetchMyAPI() {
       const response = await getReviewsList();
       setReviewsList(response);
-      setPageLimit(Math.ceil(reviewsList.length / reviewsPerPage));
     }
 
     fetchMyAPI();
   }, [showModal]);
+
+  useEffect(() => {
+    if (reviewsList.length > 0) {
+      setPageLimit(Math.ceil(reviewsList.length / reviewsPerPage));
+    }
+  }, [reviewsList, reviewsPerPage]);
 
   return (
     <div className="bg-gray-100 h-screen overflow-hidden">
@@ -53,13 +58,19 @@ function Home() {
           <AddReviewBtn />
         </div>
 
-        <div className="px-2 h-full">
-          <ReviewsList pageLimit={pageLimit} reviewsList={reviewsList} />
-        </div>
+        {pageLimit > 0 ? (
+          <>
+            <div className="px-2 h-full">
+              <ReviewsList pageLimit={pageLimit} reviewsList={reviewsList} />
+            </div>
 
-        <div className="absolute bottom-4 left-0 w-full justify-center">
-          <Paginator pageLimit={pageLimit} />
-        </div>
+            <div className="absolute bottom-4 left-0 w-full justify-center">
+              <Paginator pageLimit={pageLimit} />
+            </div>
+          </>
+        ) : (
+          <div />
+        )}
       </div>
     </div>
   );
