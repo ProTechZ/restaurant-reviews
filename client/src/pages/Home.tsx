@@ -8,15 +8,21 @@ import AddReviewBtn from "../components/AddReviewBtn";
 import ReviewsList from "../components/ReviewsList";
 import Navbar from "../components/Navbar";
 import Modal from "../components/Modal";
+import Paginator from "../components/Paginator";
+import usePaginationStore from "../stores/paginationStore";
 
 function Home() {
   const [reviewsList, setReviewsList] = useState<Review[]>([]);
   const { showModal, closeModal } = useModalStore();
+  const [pageLimit, setPageLimit] = useState(0);
+
+  const { reviewsPerPage } = usePaginationStore();
 
   useEffect(() => {
     async function fetchMyAPI() {
       const response = await getReviewsList();
       setReviewsList(response);
+      setPageLimit(Math.ceil(reviewsList.length / reviewsPerPage));
     }
 
     fetchMyAPI();
@@ -48,7 +54,11 @@ function Home() {
         </div>
 
         <div className="px-2 h-full">
-          <ReviewsList reviewsList={reviewsList} />
+          <ReviewsList pageLimit={pageLimit} reviewsList={reviewsList} />
+        </div>
+
+        <div className="absolute bottom-4 left-0 w-full justify-center">
+          <Paginator pageLimit={pageLimit} />
         </div>
       </div>
     </div>

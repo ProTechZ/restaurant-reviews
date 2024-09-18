@@ -6,11 +6,9 @@ import Paginator from "./Paginator";
 
 import usePaginationStore from "../stores/paginationStore";
 
-function ReviewsList({ reviewsList }: { reviewsList: Review[] }) {
+function ReviewsList({ reviewsList, pageLimit }: { reviewsList: Review[], pageLimit: number }) {
   const { currentPage, reviewsPerPage, handleNextPage, handlePrevPage } = usePaginationStore();
   const [showedReviews, setShowedReviews] = useState<Review[]>([]);
-
-  const pageLimit = Math.ceil(reviewsList.length / reviewsPerPage);
 
   // navigating the reviews with arrow keys
   useEffect(() => {
@@ -42,9 +40,6 @@ function ReviewsList({ reviewsList }: { reviewsList: Review[] }) {
         <ReviewItem key={ind} review={review} liked={liked} />
       ))}
 
-      <div className="absolute bottom-4 left-0 w-full justify-center">
-        <Paginator pageLimit={pageLimit}/>
-      </div>
     </div>
   );
 }
