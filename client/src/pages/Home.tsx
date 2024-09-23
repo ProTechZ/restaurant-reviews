@@ -19,14 +19,13 @@ function Home() {
 
   const { width } = useWindowDimensions();
   const { setReviewsPerPage, reviewsPerPage } = usePaginationStore();
+  
+  async function fetchMyAPI() {
+    const response = await getReviewsList();
+    setReviewsList(response);
+  }
 
   useEffect(() => {
-    async function fetchMyAPI() {
-      // you define the function every time the useffect is called - inefficient - define it outside
-      const response = await getReviewsList();
-      setReviewsList(response);
-    }
-
     fetchMyAPI();
   }, [showModal]);
 
@@ -42,7 +41,6 @@ function Home() {
     } else if (width < 640) {
       setReviewsPerPage(5);
     }
-    console.log(width, reviewsPerPage); // use a switch statement
   }, [width]);
 
   useEffect(() => {
