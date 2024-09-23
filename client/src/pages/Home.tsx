@@ -10,22 +10,40 @@ import Navbar from "../components/Navbar";
 import Modal from "../components/Modal";
 import Paginator from "../components/Paginator";
 import usePaginationStore from "../stores/paginationStore";
+import useWindowDimensions from "../hooks/useWindowsDimensions";
 
 function Home() {
   const [reviewsList, setReviewsList] = useState<Review[]>([]);
   const { showModal, closeModal } = useModalStore();
   const [pageLimit, setPageLimit] = useState(0);
 
-  const { reviewsPerPage } = usePaginationStore();
+  const { width } = useWindowDimensions();
+  const { setReviewsPerPage, reviewsPerPage } = usePaginationStore();
 
   useEffect(() => {
     async function fetchMyAPI() {
+      // you define the function every time the useffect is called - inefficient - define it outside
       const response = await getReviewsList();
       setReviewsList(response);
     }
 
     fetchMyAPI();
   }, [showModal]);
+
+  useEffect(() => {
+    console.log(width); // use a switch statement
+    if (width > 1320) {
+      setReviewsPerPage(15);
+    } else if (width < 1320 && width > 1000) {
+      setReviewsPerPage(10);
+    } else if (width < 1000 && width > 750) {
+      setReviewsPerPage(9);
+    } else if (width < 750 && width > 500) {
+      setReviewsPerPage(8);
+    } else if (width < 500) {
+      setReviewsPerPage(5);
+    }
+  }, [width]);
 
   useEffect(() => {
     if (reviewsList.length > 0) {

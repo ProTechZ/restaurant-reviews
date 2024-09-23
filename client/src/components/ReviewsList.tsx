@@ -12,9 +12,10 @@ function ReviewsList({
   reviewsList: Review[];
   pageLimit: number;
 }) {
-  const { currentPage, reviewsPerPage, handleNextPage, handlePrevPage } =
-    usePaginationStore();
+  const { currentPage, handleNextPage, handlePrevPage, reviewsPerPage } = usePaginationStore();
   const [showedReviews, setShowedReviews] = useState<Review[]>([]);
+
+
 
   // navigating the reviews with arrow keys
   useEffect(() => {
