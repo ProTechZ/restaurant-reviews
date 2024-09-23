@@ -24,7 +24,7 @@ function FeedbackModalSection() {
   };
 
   return (
-    <div className="h-full w-full flex flex-col justify-between">
+    <div className="h-full w-full flex flex-col gap-20">
       <div className=" flex-col flex gap-5">
         <h1 className="font-medium italic">
           We're sorry to hear that you feel that way.
@@ -46,16 +46,16 @@ function FeedbackModalSection() {
 
       <div className="flex flex-row gap-3">
         <button
-          className={`${buttonStyle} bg-navy hover:bg-blue-900`}
-          onClick={onSubmit}
-        >
-          Send
-        </button>
-        <button
           onClick={onClose}
           className={`${buttonStyle} bg-red-400 hover:bg-red-500`}
         >
           Close
+        </button>
+        <button
+          className={`${buttonStyle} bg-navy hover:bg-blue-900`}
+          onClick={onSubmit}
+        >
+          Send
         </button>
       </div>
     </div>

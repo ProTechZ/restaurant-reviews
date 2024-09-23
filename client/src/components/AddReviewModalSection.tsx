@@ -32,12 +32,10 @@ function AddReviewModalSection() {
   return (
     <div>
       <div className="mb-8">
-        <h1 className="font-medium text-gray-900">
-          What do you think of us?
-        </h1>
-        
+        <h1 className="font-medium text-gray-900">What do you think of us?</h1>
+
         <textarea
-          name='review-input'
+          name="review-input"
           onChange={(e) => setReview(e.target.value)}
           value={review}
           className="w-full h-64 resize-none outline-none bg-gray-100 border border-gray-300 text-sm rounded-lg focus:border-navy p-2.5"
@@ -47,16 +45,16 @@ function AddReviewModalSection() {
 
       <div className="flex flex-row gap-3">
         <button
-          className={`${buttonStyle} bg-navy hover:bg-blue-900`}
-          onClick={onSubmit}
-        >
-          Submit
-        </button>
-        <button
           onClick={closeModal}
           className={`${buttonStyle} bg-red-400 hover:bg-red-500`}
         >
           Close
+        </button>
+        <button
+          className={`${buttonStyle} bg-navy hover:bg-blue-900`}
+          onClick={onSubmit}
+        >
+          Submit
         </button>
       </div>
     </div>
