@@ -15,8 +15,6 @@ function ReviewsList({
   const { currentPage, handleNextPage, handlePrevPage, reviewsPerPage } = usePaginationStore();
   const [showedReviews, setShowedReviews] = useState<Review[]>([]);
 
-
-
   // navigating the reviews with arrow keys
   useEffect(() => {
     const handleKeyPress = (event: KeyboardEvent) => {
@@ -38,8 +36,7 @@ function ReviewsList({
     const endIdx = startIdx + reviewsPerPage;
 
     setShowedReviews(reviewsList.slice(startIdx, endIdx));
-    console.log(reviewsPerPage, pageLimit);
-  }, [currentPage, reviewsList]);
+  }, [currentPage, reviewsList, reviewsPerPage]);
 
   return (
     <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 p-5">

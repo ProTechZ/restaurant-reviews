@@ -31,18 +31,18 @@ function Home() {
   }, [showModal]);
 
   useEffect(() => {
-    console.log(width); // use a switch statement
     if (width > 1320) {
       setReviewsPerPage(15);
-    } else if (width < 1320 && width > 1000) {
+    } else if (width < 1320 && width > 1020) {
       setReviewsPerPage(10);
-    } else if (width < 1000 && width > 750) {
+    } else if (width < 1020 && width > 770) {
       setReviewsPerPage(9);
-    } else if (width < 750 && width > 500) {
+    } else if (width < 770 && width > 640) {
       setReviewsPerPage(8);
-    } else if (width < 500) {
+    } else if (width < 640) {
       setReviewsPerPage(5);
     }
+    console.log(width, reviewsPerPage); // use a switch statement
   }, [width]);
 
   useEffect(() => {
