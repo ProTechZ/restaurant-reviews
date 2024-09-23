@@ -41,7 +41,7 @@ function ReviewsList({
   }, [currentPage, reviewsList]);
 
   return (
-    <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 p-5">
+    <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 p-5">
       {showedReviews.map(({ review, liked }, ind) => (
         <ReviewCard key={ind} review={review} liked={liked} />
       ))}
