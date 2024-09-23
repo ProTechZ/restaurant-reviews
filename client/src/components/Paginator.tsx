@@ -39,6 +39,7 @@ function Paginator({ pageLimit }: { pageLimit: number }) {
 
             if (e.key === "Enter") {
               if (
+                isNaN(displayCurrPageInt) ||
                 displayCurrPage === "" ||
                 displayCurrPageInt < 1 ||
                 displayCurrPageInt > pageLimit
