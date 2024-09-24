@@ -3,7 +3,7 @@ import { create } from "zustand";
 interface FeedbackState {
   showFeedback: boolean;
   goToFeedback: () => void;
-  closeFeedback: ()=> void
+  closeFeedback: () => void;
 }
 
 const useFeedbackStore = create<FeedbackState>((set) => ({
@@ -12,4 +12,4 @@ const useFeedbackStore = create<FeedbackState>((set) => ({
   closeFeedback: () => set(() => ({ showFeedback: false })),
 }));
 
-export default useFeedbackStore; 
+export default useFeedbackStore;

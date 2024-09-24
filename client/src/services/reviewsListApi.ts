@@ -11,6 +11,7 @@ export const getReviewsList = async (): Promise<Review[]> => {
     );
 
     const results = await response.json();
+
     return results["results"];
   } catch (e) {
     console.error((e as Error).message);

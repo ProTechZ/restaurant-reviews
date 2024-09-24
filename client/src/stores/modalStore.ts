@@ -12,4 +12,4 @@ const useModalStore = create<ModalState>((set) => ({
   closeModal: () => set(() => ({ showModal: false })),
 }));
 
-export default useModalStore; 
+export default useModalStore;

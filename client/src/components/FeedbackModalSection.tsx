@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import useModalStore from "../stores/modalStore";
 import useFeedbackStore from "../stores/feedbackStore";
 
@@ -10,7 +10,7 @@ function FeedbackModalSection() {
   const { closeModal } = useModalStore();
   const { closeFeedback } = useFeedbackStore();
 
-  const onSubmit = async () => {
+  const onSubmit = () => {
     console.log(
       "You found this! 😂😂\nIf you're wondering, we don't actually care about your feedback!"
     );

@@ -12,7 +12,8 @@ function ReviewsList({
   reviewsList: Review[];
   pageLimit: number;
 }) {
-  const { currentPage, handleNextPage, handlePrevPage, reviewsPerPage } = usePaginationStore();
+  const { currentPage, handleNextPage, handlePrevPage, reviewsPerPage } =
+    usePaginationStore();
   const [showedReviews, setShowedReviews] = useState<Review[]>([]);
 
   // navigating the reviews with arrow keys
@@ -39,7 +40,7 @@ function ReviewsList({
   }, [currentPage, reviewsList, reviewsPerPage]);
 
   return (
-    <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 p-5">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 p-5">
       {showedReviews.map(({ review, liked }, ind) => (
         <ReviewCard key={ind} review={review} liked={liked} />
       ))}

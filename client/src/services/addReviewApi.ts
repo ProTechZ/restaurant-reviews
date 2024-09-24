@@ -16,12 +16,13 @@ export const addReview = async (review: string) => {
       `${process.env.REACT_APP_API_URL}/reviews/add`,
       {
         method: "POST",
-        headers: {'Content-Type': 'application/json'},
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ review }),
       }
     );
-    const {liked} = await response.json();
-    return liked
+    const { liked } = await response.json();
+
+    return liked;
   } catch (e) {
     console.error((e as Error).message);
   }

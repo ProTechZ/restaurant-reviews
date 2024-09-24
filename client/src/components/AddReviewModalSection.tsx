@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { addReview, validateReview } from "../services/addReviewApi";
 import useModalStore from "../stores/modalStore";
 import useFeedbackStore from "../stores/feedbackStore";
@@ -9,6 +9,7 @@ const buttonStyle =
 function AddReviewModalSection() {
   const [review, setReview] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
+
   const { closeModal } = useModalStore();
   const { goToFeedback } = useFeedbackStore();
 

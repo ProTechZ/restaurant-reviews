@@ -15,8 +15,10 @@ const usePaginationStore = create<PaginationState>()(
     (set, get) => ({
       currentPage: 1,
       setCurrentPage: (page) => set({ currentPage: page }),
+      
       reviewsPerPage: 15,
       setReviewsPerPage: (val) => set({ reviewsPerPage: val }),
+
       handlePrevPage: () => {
         const prevPage = get().currentPage;
         set({ currentPage: prevPage > 1 ? prevPage - 1 : 1 });

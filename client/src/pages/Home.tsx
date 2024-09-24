@@ -19,7 +19,7 @@ function Home() {
 
   const { width } = useWindowDimensions();
   const { setReviewsPerPage, reviewsPerPage } = usePaginationStore();
-  
+
   async function fetchMyAPI() {
     const response = await getReviewsList();
     setReviewsList(response);
@@ -43,6 +43,7 @@ function Home() {
     }
   }, [width]);
 
+  // calculating page limit
   useEffect(() => {
     if (reviewsList.length > 0) {
       setPageLimit(Math.ceil(reviewsList.length / reviewsPerPage));
