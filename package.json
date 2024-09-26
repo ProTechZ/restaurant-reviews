@@ -8,7 +8,6 @@
     "server": "cd server && npm start",
     "client": "cd client && npm start",
     "fastapi": "cd fastapi-server && env\\Scripts\\activate && fastapi run server.py"
-
   },
   "keywords": [],
   "author": "",

@@ -51,25 +51,32 @@ To use and try out the project for yourself, follow these steps.
    npm install
    ```
 
-   Then create a `.env` file in this folder and setup a `REACT_APP_API_URL` variable in it. This url should point to the express server (e.g. `http://localhost:3001`).
+   Then create a `.env` file in this folder and paste this code:
+    
+   ```
+    REACT_APP_API_URL=http://localhost:3001
+   ```
 
   <br>
 
 3. Setup the server folder
    ```bash
-   cd server
+   cd ../server
    npm install
    ```
-   Then create a `.env` file in this folder and setup a `PORT` variable in it. This port is the port for the express server. (3001 recommended).
+   Then create a `.env` file in this folder and paste this:
+
+   ```
+    PORT=3001
+    CLIENT_PORT=3000
+   ```
 
 <br>
 
 4. Setup the fastapi-server folder with a virtual environment
 
    ```bash
-   pip install virtualenv --global
-
-   cd fastapi-server
+   cd ../fastapi-server
 
    python -m venv env
    env\Scripts\activate.bat
@@ -80,6 +87,8 @@ To use and try out the project for yourself, follow these steps.
 ## Running the project
 
 Create 3 new terminals, and make sure they are in the root directory (restaurant-reviews). Then run `npm run client` , `npm run server` and `npm run fastapi` respectively.
+
+If you do want to modify the express server code, make sure to run `npm run tsc` as well. This ensures that the changes will be compiled and converted into regular JS.
 
 ## Usage
 

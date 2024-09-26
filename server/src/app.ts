@@ -21,7 +21,7 @@ app.use(
     credentials: true,
     methods: ["GET", "POST", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Set-Cookie"],
-    origin: ["http://localhost:3000"],
+    origin: [`http://localhost:${process.env.CLIENT_PORT}`],
   })
 );
 
