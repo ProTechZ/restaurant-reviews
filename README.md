@@ -10,6 +10,8 @@ This is a full-stack web application that allows users to leave and view reviews
 - [Usage](#usage)
 - [API Endpoints](#api-endpoints)
 
+<br>
+
 ## Tech Stack
 
 - **Frontend:** 
@@ -31,6 +33,8 @@ This is a full-stack web application that allows users to leave and view reviews
 
 - **Package Manager:** npm, pip
 
+<br>
+
 ## Setup
 
 To use and try out the project for yourself, follow these steps.
@@ -41,8 +45,6 @@ To use and try out the project for yourself, follow these steps.
    git clone https://github.com/ProTechZ/restaurant-reviews.git
    cd restaurant-reviews
    ```
-
-   <br>
 
 2. Setup the client folder.
 
@@ -57,8 +59,6 @@ To use and try out the project for yourself, follow these steps.
     REACT_APP_API_URL=http://localhost:3001
    ```
 
-  <br>
-
 3. Setup the server folder
    ```bash
    cd ../server
@@ -71,8 +71,6 @@ To use and try out the project for yourself, follow these steps.
     CLIENT_PORT=3000
    ```
 
-<br>
-
 4. Setup the fastapi-server folder with a virtual environment
 
    ```bash
@@ -83,6 +81,8 @@ To use and try out the project for yourself, follow these steps.
 
    pip install -r requirements.txt
    ```
+
+<br>
 
 ## Running the project
 
@@ -95,6 +95,8 @@ If you do want to modify the express server code, make sure to run `npm run tsc`
 Navigate to http://localhost:3000 to view the website.
 
 Click the **Leave Review** button to leave your own review. An NLP model which try to predict if your review is positive or negative. If it is negative, it will take you to a feedback form asking what we can do better!
+
+<br>
 
 ## API Endpoints
 
