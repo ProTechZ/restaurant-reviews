@@ -2,6 +2,8 @@
 
 This is a full-stack web application that allows users to leave and view reviews for a fictional restaurant, as well as see other reviews. It uses an NLP model to determine if the review is positive or negative.
 
+![image](https://github.com/user-attachments/assets/40a228b4-b9b5-426a-a65b-d4eb8490b749)
+
 ## Table of Contents
 
 - [Tech Stack](#tech-stack)
@@ -56,7 +58,7 @@ To use and try out the project for yourself, follow these steps.
    Then create a `.env` file in this folder and paste this code:
     
    ```
-    REACT_APP_API_URL=http://localhost:3001
+   REACT_APP_API_URL=http://localhost:3001
    ```
 
 3. Setup the server folder
@@ -67,8 +69,8 @@ To use and try out the project for yourself, follow these steps.
    Then create a `.env` file in this folder and paste this:
 
    ```
-    PORT=3001
-    CLIENT_PORT=3000
+   PORT=3001
+   CLIENT_PORT=3000
    ```
 
 4. Setup the fastapi-server folder with a virtual environment
